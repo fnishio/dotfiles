@@ -1,0 +1,3 @@
+defencoding utf8
+escape ^]^]
+shell -/bin/zsh
