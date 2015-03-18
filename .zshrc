@@ -26,6 +26,9 @@ calc(){ awk "BEGIN{ print $* }" ;}
 # Zle (emacs key bind)
 bindkey -e
 
+# Initialization
+# setopt all_export
+
 # Changing Directories
 setopt auto_pushd
 setopt pushd_ignore_dups
@@ -40,7 +43,7 @@ setopt list_packed
 setopt nolistbeep
 
 # Expansion and Globbing
-#setopt extended_glob
+setopt extended_glob
 
 # History
 HISTFILE=$HOME/.zsh_history
@@ -55,9 +58,6 @@ setopt bang_hist
 setopt no_hist_beep
 setopt share_history
 setopt hist_ignore_dups
-
-# Initialization
-# setopt all_export
 
 # Input/Output
 setopt no_clobber
@@ -97,7 +97,7 @@ alias	ls='ls -vF'
 alias	rm='rm -i'
 alias	clean='/bin/rm .*~ *~'
 alias	ubuntu='ssh -X ubuntu'
-alias	minicom='LANG=C sudo minicom'
+
 # suffix aliases
 alias -s zip=zipinfo
 alias -s tgz=gzcat
@@ -119,6 +119,10 @@ alias -s xml=lv
 #alias -s jpeg=display
 #alias -s png=display
 #alias -s bmp=display
+
+# docker
+alias	docker_stop='docker ps -aq|xargs docker stop'
+alias	docker_rm='docker ps -aq|xargs docker rm'
 
 # start & attach screen session
 #if [ ${TERM} != 'screen' ]; then
