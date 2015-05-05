@@ -31,6 +31,7 @@ bindkey -e
 
 # Changing Directories
 setopt auto_pushd
+setopt auto_cd
 setopt pushd_ignore_dups
 setopt pushd_to_home
 setopt noautoremoveslash
@@ -47,8 +48,8 @@ setopt extended_glob
 
 # History
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -68,7 +69,6 @@ setopt check_jobs
 
 # Prompting
 PS1="%n@%m${WINDOW:+":$WINDOW"}\$ "
-#RPS1="(%~)"
 case "${TERM}" in
   xterm* )
     precmd() {
@@ -128,3 +128,15 @@ alias	docker_rm='docker ps -aq|xargs docker rm'
 #if [ ${TERM} != 'screen' ]; then
 #  exec screen -d -R
 #fi
+
+###
+### OS Type
+###
+case ${OSTYPE} in
+  darwin*)
+    [ -f ~/.zshrc.darwin ] && source ~/.zshrc.darwin
+    ;;
+  linux*)
+    [ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
+    ;;
+esac
