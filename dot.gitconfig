@@ -1,0 +1,13 @@
+[include]
+    path = .gitconfig.local
+
+[color]
+    ui = auto
+
+[alias]
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
+    l = log
+    lg = log --graph --all --oneline --decorate
