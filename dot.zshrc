@@ -66,7 +66,7 @@ colors
 
 set_rps1() {
   local cur_dir
-  cur_dir=${PWD//${HOME}/\~}
+  cur_dir=${PWD/#${HOME}/\~}
   if [ ${#cur_dir} -gt 30 ]; then
     cur_dir=${cur_dir[1,12]}...${cur_dir[${#cur_dir}-15,${#cur_dir}]};
   fi
