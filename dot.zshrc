@@ -1,40 +1,23 @@
-###
-### .zshrc
-###    - set various options for interactive shell
-###
+# -*- mode: sh; coding: utf-8 -*-
+# .zshrc - set options for interactive shell
 
-###
 ### functions
-###
-set_rps1() {
-  DIR=`pwd|sed -e "s|$HOME|~|"`
-  if [ ${#DIR} -gt 30 ]; then
-    CurDir=${DIR[1,12]}...${DIR[${#DIR}-15,${#DIR}]};
-  else
-    CurDir=$DIR;
-  fi
-  RPS1="(${CurDir})"
-}
-
 # calculator (from www.commandlinefu.com)
 calc(){ awk "BEGIN{ print $* }" ;}
 
-###
-### Options & Parameters
-###
+### options
+setopt all_export
 
 # Zle (emacs key bind)
 bindkey -e
 
-# Initialization
-# setopt all_export
-
-# Changing Directories
+# Directory
 setopt auto_pushd
 setopt auto_cd
 setopt pushd_ignore_dups
 setopt pushd_to_home
 setopt noautoremoveslash
+cdpath=(~)
 
 # Completion
 autoload -U compinit
@@ -42,9 +25,12 @@ compinit
 FIGNORE='~:.o:.out:.aux:.log'
 setopt list_packed
 setopt nolistbeep
+setopt magic_equal_subst
+setopt auto_param_slash
 
 # Expansion and Globbing
 setopt extended_glob
+setopt mark_dirs
 
 # History
 HISTFILE=$HOME/.zsh_history
@@ -59,6 +45,8 @@ setopt bang_hist
 setopt no_hist_beep
 setopt share_history
 setopt hist_ignore_dups
+setopt hist_reduce_blanks
+setopt no_flow_control
 
 # Input/Output
 setopt no_clobber
@@ -67,36 +55,45 @@ setopt ignore_eof
 # Job Control
 setopt check_jobs
 
-# Prompting
-PS1="%n@%m${WINDOW:+":$WINDOW"}\$ "
-case "${TERM}" in
-  xterm* )
-    precmd() {
+# Prompt
+autoload -Uz add-zsh-hook
+setopt prompt_subst
+setopt prompt_percent
+setopt transient_rprompt
+
+autoload -U colors
+colors
+
+set_rps1() {
+  local cur_dir
+  cur_dir=${PWD//${HOME}/\~}
+  if [ ${#cur_dir} -gt 30 ]; then
+    cur_dir=${cur_dir[1,12]}...${cur_dir[${#cur_dir}-15,${#cur_dir}]};
+  fi
+  RPS1="(${cur_dir})"
+}
+
+set_title() {
+  case "${TERM}" in
+    xterm* )
       echo -ne "\033]0;${USER}@${HOST%%.*}${WINDOW:+":$WINDOW"}\007"
-      set_rps1
-    }
-    ;;
-  screen )
-    precmd() {
+      ;;
+    screen )
       echo -ne "\033P\033]0;${USER}@${HOST%%.*}${WINDOW:+":$WINDOW"}\007\033\\"
-      set_rps1
-    }
-    ;;
-  * )
-    precmd() {
-      set_rps1
-    }
-    ;;
-esac
+      ;;
+    * )
+      ;;
+  esac
+}
 
+PS1="%n@%m${WINDOW:+":$WINDOW"}\$ "
+add-zsh-hook precmd set_rps1
+add-zsh-hook precmd set_title
 
-###
 ### Aliases
-###
 alias	ls='ls -vF'
 alias	rm='rm -i'
 alias	clean='/bin/rm .*~ *~'
-alias	ubuntu='ssh -X ubuntu'
 
 # suffix aliases
 alias -s zip=zipinfo
@@ -109,29 +106,14 @@ alias -s c=lv
 alias -s C=lv
 alias -s h=lv
 alias -s cpp=lv
-alias -s sh=lv
 alias -s txt=lv
 alias -s xml=lv
-#alias -s html=firefox
-#alias -s xhtml=firefox
-#alias -s gif=display
-#alias -s jpg=display
-#alias -s jpeg=display
-#alias -s png=display
-#alias -s bmp=display
 
 # docker
 alias	docker_stop='docker ps -aq|xargs docker stop'
 alias	docker_rm='docker ps -aq|xargs docker rm'
 
-# start & attach screen session
-#if [ ${TERM} != 'screen' ]; then
-#  exec screen -d -R
-#fi
-
-###
 ### OS Type
-###
 case ${OSTYPE} in
   darwin*)
     [ -f ~/.zshrc.darwin ] && source ~/.zshrc.darwin
@@ -140,3 +122,8 @@ case ${OSTYPE} in
     [ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
     ;;
 esac
+
+# start & attach screen session
+#if [ ${TERM} != 'screen' ]; then
+#  exec screen -d -R
+#fi
