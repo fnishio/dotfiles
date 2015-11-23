@@ -54,6 +54,4 @@ if [ "$PS1" ]; then
     alias	le=less
     alias	rm='rm -i'
     alias	clean='/bin/rm *~ .*~'
-    alias	kinput2='kinput2.macim -macim'
-    alias	platipus='ssh 43.18.53.190'
 fi

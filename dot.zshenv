@@ -1,7 +1,5 @@
 # -*- mode: sh; coding: utf-8 -*-
-###
-### .zshenv - environment vars
-###
+# .zshenv - environment vars
 
 ### Editor
 export EDITOR=vim

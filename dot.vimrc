@@ -49,7 +49,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler', {
+  \   'autoload' : { 'commands' : [ 'VimFiler' ] },
+  \ }
 
 call neobundle#end()
 
