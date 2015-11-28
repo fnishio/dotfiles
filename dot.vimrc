@@ -4,6 +4,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformat=unix
 set fileformats=unix,mac,dos
+set ts=4 sw=4 et
 
 " Display settings
 set number
@@ -24,6 +25,7 @@ set statusline=%f%m%r%h%w[%L][%{&ff}]%y[%04l,%04v]
 "              | | +-- readonly flag in square brackets
 "              | +-- rodified flag in square brackets
 "              +-- full path to file in the buffer
+syntax on
 
 "----------------------------------------------------
 " NeoBundle
@@ -52,6 +54,17 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundleLazy 'Shougo/vimfiler', {
   \   'autoload' : { 'commands' : [ 'VimFiler' ] },
   \ }
+
+" vim-indent-guides
+NeoBundle "nathanaelkane/vim-indent-guides"
+colorscheme default
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=white
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=lightgrey
+let g:indent_guides_color_change_percent = 30
 
 call neobundle#end()
 

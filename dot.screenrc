@@ -1,3 +1,4 @@
 defencoding utf8
 escape ^]^]
+term "screen-256color"
 shell /bin/zsh
