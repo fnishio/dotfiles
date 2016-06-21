@@ -1,0 +1,13 @@
+#
+# .zshrc.linux - .zshrc for linux
+
+### Aliases
+
+# suffix aliases
+alias -s html=firefox
+alias -s xhtml=firefox
+alias -s gif=display
+alias -s jpg=display
+alias -s jpeg=display
+alias -s png=display
+alias -s bmp=display
