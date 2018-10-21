@@ -1,2 +1,3 @@
+dot.gitconfig.local
 dot.vim/bundle/*
 !dot.vim/bundle/neobundle.vim
