@@ -33,4 +33,10 @@ case ${OSTYPE} in
     [ -f ~/.zshenv.linux ] && source ~/.zshenv.linux
     ;;
 esac
+
+### WSL on Windows
+if [[ `uname -a` =~ Microsoft ]]; then
+  [ -f ~/.zshenv.wsl ] && source ~/.zshenv.wsl
+fi
+
 [ -f ~/.zshenv.local ] && source ~/.zshenv.local
