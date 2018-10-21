@@ -1,0 +1,6 @@
+# -*- mode: sh; coding: utf-8 -*-
+# .zshenv.linux - environment vars (linux)
+
+### screen on WSL
+[ -d $HOME/.screen ] || mkdir -m 0700 $HOME/.screen
+export SCREENDIR=$HOME/.screen

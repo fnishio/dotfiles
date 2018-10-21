@@ -55,3 +55,7 @@ if [ "$PS1" ]; then
     alias	rm='rm -i'
     alias	clean='/bin/rm *~ .*~'
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/nishio/.sdkman"
+[[ -s "/home/nishio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nishio/.sdkman/bin/sdkman-init.sh"

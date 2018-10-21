@@ -127,3 +127,7 @@ esac
 #if [ ${TERM} != 'screen' ]; then
 #  exec screen -d -R
 #fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/nishio/.sdkman"
+[[ -s "/home/nishio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/nishio/.sdkman/bin/sdkman-init.sh"

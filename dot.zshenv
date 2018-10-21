@@ -14,6 +14,9 @@ path=(
   /usr/local/bin(N-/)
   $path
 
+# Python
+  ~/.local/bin
+
 # Android
   ~/Library/Android/sdk/tools(N-/)
   ~/Library/Android/sdk/platform-tools(N-/)
