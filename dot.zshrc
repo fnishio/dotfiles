@@ -91,7 +91,7 @@ add-zsh-hook precmd set_rps1
 add-zsh-hook precmd set_title
 
 ### Aliases
-alias	ls='ls -vF'
+alias	ls='ls -vF --color=auto'
 alias	rm='rm -i'
 alias	clean='/bin/rm .*~ *~'
 
