@@ -4,3 +4,6 @@
 ### screen on WSL
 [ -d $HOME/.screen ] || mkdir -m 0700 $HOME/.screen
 export SCREENDIR=$HOME/.screen
+
+## file mask
+umask 022
