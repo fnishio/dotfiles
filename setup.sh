@@ -22,3 +22,12 @@ function link() {
 for file in ${DOTFILES_DIR}/dot.*; do
   link `basename $file`
 done
+
+###
+### .vimrc uses deni,
+### then setup deni
+if [ ! -d ~/.cache/deni ]; then
+  curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ${DOTFILES_DIR}/installer.sh
+  sh ${DOTFILES_DIR}/installer.sh ~/.cache/dein
+  rm ${DOTFILES_DIR}/installer.sh
+fi
