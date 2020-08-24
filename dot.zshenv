@@ -14,12 +14,11 @@ path=(
   /usr/local/bin(N-/)
   $path
 
-# Python
-  ~/.local/bin
+# Nodejs
+  /usr/local/lib/nodejs/node-v12.18.3-linux-x64/bin(N-/)
 
-# Android
-  ~/Library/Android/sdk/tools(N-/)
-  ~/Library/Android/sdk/platform-tools(N-/)
+# Python
+  ~/.local/bin(N-/)
 )
 export path
 
