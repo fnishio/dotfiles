@@ -5,5 +5,8 @@
 [ -d $HOME/.screen ] || mkdir -m 0700 $HOME/.screen
 export SCREENDIR=$HOME/.screen
 
+# X server DISPLAY
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+
 ## file mask
 umask 022

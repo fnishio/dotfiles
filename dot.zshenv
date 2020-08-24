@@ -34,8 +34,8 @@ case ${OSTYPE} in
     ;;
 esac
 
-### WSL on Windows
-if [[ `uname -a` =~ Microsoft ]]; then
+### WSL2 on Windows
+if [[ `uname -r` =~ microsoft ]]; then
   [ -f ~/.zshenv.wsl ] && source ~/.zshenv.wsl
 fi
 
