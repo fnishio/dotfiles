@@ -24,8 +24,8 @@ for file in ${DOTFILES_DIR}/dot.*; do
 done
 
 ###
-### .vimrc uses deni,
-### then setup deni
+### .vimrc uses dein,
+### then setup dein
 if [ ! -d ~/.cache/deni ]; then
   curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ${DOTFILES_DIR}/installer.sh
   sh ${DOTFILES_DIR}/installer.sh ~/.cache/dein
