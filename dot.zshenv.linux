@@ -1,2 +1,9 @@
 # -*- mode: sh; coding: utf-8 -*-
 # .zshenv.linux - environment vars (linux)
+
+# Android SDK
+export ANDROID_SDK_ROOT=~/android-sdk-linux
+path=(
+  ${ANDROID_SDK_ROOT}/tools/bin(N-/)
+  $path
+)
