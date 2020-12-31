@@ -20,8 +20,6 @@ path=(
 # Python
   ~/.local/bin(N-/)
 )
-export path
-
 
 ### OS Type
 case ${OSTYPE} in
