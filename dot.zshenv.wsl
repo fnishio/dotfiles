@@ -9,5 +9,9 @@ export SCREENDIR=$HOME/.screen
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 export LIBGL_ALWAYS_INDIRECT=1
 
+path=(
+  $path
+  ~/android-sdk-linux/platform-tools
+)
 ## file mask
 umask 022
