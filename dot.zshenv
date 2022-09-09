@@ -14,9 +14,6 @@ path=(
   /usr/local/bin(N-/)
   $path
 
-# Nodejs
-  /usr/local/lib/nodejs/node-v12.18.3-linux-x64/bin(N-/)
-
 # Python
   ~/.local/bin(N-/)
 )
