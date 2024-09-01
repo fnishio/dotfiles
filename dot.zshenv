@@ -13,9 +13,6 @@ typeset -U path
 path=(
   /usr/local/bin(N-/)
   $path
-
-# Python
-  ~/.local/bin(N-/)
 )
 
 ### OS Type

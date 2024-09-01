@@ -1,11 +1,27 @@
 # -*- mode: sh; coding: utf-8 -*-
 # .zshrc - set options for interactive shell
 
+###
+### Apps
+###
+
+#NVM
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+
+###
 ### functions
+###
 # calculator (from www.commandlinefu.com)
 calc(){ awk "BEGIN{ print $* }" ;}
 
-### options
+###
+### Options
+###
 setopt all_export
 
 # Zle (emacs key bind)
@@ -20,7 +36,7 @@ setopt noautoremoveslash
 cdpath=(~)
 
 # Completion
-autoload -U compinit
+autoload -Uz compinit
 compinit
 FIGNORE='~:.o:.out:.aux:.log'
 setopt list_packed
@@ -90,7 +106,9 @@ PS1="%n@%m${WINDOW:+":$WINDOW"}\$ "
 add-zsh-hook precmd set_rps1
 add-zsh-hook precmd set_title
 
+###
 ### Aliases
+###
 alias	ls='ls -vF --color=auto'
 alias	rm='rm -i'
 alias	clean='/bin/rm .*~ *~'
@@ -124,10 +142,6 @@ case ${OSTYPE} in
 esac
 
 # start & attach screen session
-#if [ ${TERM} != 'screen' ]; then
-#  exec screen -d -R
-#fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if ! [[ ${TERM} =~ 'screen' ]]; then
+  exec screen -d -R
+fi
